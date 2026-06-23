@@ -178,7 +178,6 @@
     }
     .badge-choice { background: #dbeafe; color: #1d4ed8; }
     .badge-truefalse { background: #dcfce7; color: #16a34a; }
-    .badge-fillblank { background: #fef3c7; color: #b45309; }
     .badge-shortanswer { background: #f3e8ff; color: #7c3aed; }
     .diff-easy { color: #16a34a; }
     .diff-medium { color: #f59e0b; }
@@ -233,7 +232,7 @@
     .tf-btn.correct { border-color: var(--success); background: #dcfce7; color: var(--success); }
     .tf-btn.wrong { border-color: var(--danger); background: #fee2e2; color: var(--danger); }
 
-    /* Fill blank & short answer */
+    /* Short answer */
     .input-answer {
       width: 100%;
       padding: 12px 16px;
@@ -395,10 +394,16 @@
       </div>
       <div style="font-size:13px;color:var(--text-secondary);margin-bottom:8px;margin-top:12px;">题型</div>
       <div class="filter-row" id="typeFilters">
-        <span class="filter-tag" data-filter="all" onclick="setType('all')">全部</span>
-        <span class="filter-tag" data-filter="choice" onclick="setType('choice')">选择题</span>
+        <span class="filter-tag active" data-filter="all" onclick="setType('all')">全部</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);margin:10px 0 6px;padding-left:2px;font-weight:500;">📋 选择题</div>
+      <div class="filter-row" id="typeFiltersChoice">
+        <span class="filter-tag" data-filter="choice" onclick="setType('choice')">单选题</span>
+        <span class="filter-tag" data-filter="multiChoice" onclick="setType('multiChoice')">多选题</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);margin:10px 0 6px;padding-left:2px;font-weight:500;">📝 其他题型</div>
+      <div class="filter-row" id="typeFiltersOther">
         <span class="filter-tag" data-filter="truefalse" onclick="setType('truefalse')">判断题</span>
-        <span class="filter-tag" data-filter="fillblank" onclick="setType('fillblank')">填空题</span>
         <span class="filter-tag" data-filter="shortanswer" onclick="setType('shortanswer')">简答题</span>
       </div>
     </div>
@@ -588,6 +593,8 @@ function setDifficulty(diff) {
 function setType(type) {
   filterType = type;
   updateActiveTags('typeFilters', type);
+  updateActiveTags('typeFiltersChoice', type);
+  updateActiveTags('typeFiltersOther', type);
   applyFilters();
 }
 
@@ -791,6 +798,7 @@ function renderAnswerArea(container, q, context) {
   const disabled = (context === 'quiz' && submitted[q.id]) ? 'disabled' : '';
 
   if (q.type === 'choice') {
+    addChoiceHint(container, 'choice');
     const list = document.createElement('div');
     list.className = 'options-list';
     q.options.forEach((opt, i) => {
@@ -802,16 +810,40 @@ function renderAnswerArea(container, q, context) {
       const savedAns = context === 'exam' ? examAnswers[q.id] : userAnswers[q.id];
       if (savedAns === i) div.classList.add('selected');
 
-      if (!(context === 'quiz' && submitted[q.id]) && context !== 'exam') {
-        // Not submitted yet, allow selection
-      }
-
       div.onclick = () => {
         if (context === 'quiz' && submitted[q.id]) return;
         list.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
         div.classList.add('selected');
         if (context === 'exam') examAnswers[q.id] = i;
         else userAnswers[q.id] = i;
+      };
+      list.appendChild(div);
+    });
+    container.appendChild(list);
+  } else if (q.type === 'multiChoice') {
+    addChoiceHint(container, 'multiChoice');
+    const list = document.createElement('div');
+    list.className = 'options-list';
+    q.options.forEach((opt, i) => {
+      const div = document.createElement('div');
+      div.className = 'option-item';
+      div.setAttribute('data-option', i);
+      div.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + i)}</span><span>${opt}</span>`;
+
+      const savedAns = context === 'exam' ? examAnswers[q.id] : userAnswers[q.id];
+      if (Array.isArray(savedAns) && savedAns.includes(i)) div.classList.add('selected');
+
+      div.onclick = () => {
+        if (context === 'quiz' && submitted[q.id]) return;
+        div.classList.toggle('selected');
+        let arr = context === 'exam' ? examAnswers[q.id] : userAnswers[q.id];
+        if (!Array.isArray(arr)) arr = [];
+        const idx = arr.indexOf(i);
+        if (idx >= 0) arr.splice(idx, 1);
+        else arr.push(i);
+        arr.sort((a, b) => a - b);
+        if (context === 'exam') examAnswers[q.id] = arr;
+        else userAnswers[q.id] = arr;
       };
       list.appendChild(div);
     });
@@ -839,19 +871,6 @@ function renderAnswerArea(container, q, context) {
       row.appendChild(btn);
     });
     container.appendChild(row);
-  } else if (q.type === 'fillblank') {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.className = 'input-answer';
-    input.placeholder = '请输入答案...';
-    const savedAns = context === 'exam' ? examAnswers[q.id] : userAnswers[q.id];
-    if (savedAns) input.value = savedAns;
-    if (context === 'quiz' && submitted[q.id]) input.disabled = true;
-    input.oninput = () => {
-      if (context === 'exam') examAnswers[q.id] = input.value.trim();
-      else userAnswers[q.id] = input.value.trim();
-    };
-    container.appendChild(input);
   } else if (q.type === 'shortanswer') {
     const textarea = document.createElement('textarea');
     textarea.className = 'textarea-answer';
@@ -875,6 +894,13 @@ function markCorrectAnswer(q) {
       if (parseInt(el.getAttribute('data-option')) === q.answer) el.classList.add('correct');
       else if (el.classList.contains('selected')) el.classList.add('wrong');
     });
+  } else if (q.type === 'multiChoice') {
+    container.querySelectorAll('.option-item').forEach(el => {
+      el.onclick = null;
+      const idx = parseInt(el.getAttribute('data-option'));
+      if (q.answer.includes(idx)) el.classList.add('correct');
+      else if (el.classList.contains('selected')) el.classList.add('wrong');
+    });
   } else if (q.type === 'truefalse') {
     container.querySelectorAll('.tf-btn').forEach(el => {
       el.onclick = null;
@@ -888,12 +914,19 @@ function markCorrectAnswer(q) {
 function getTypeBadge(type) {
   const map = {
     choice: ['选择题', 'badge-choice'],
+    multiChoice: ['多选题', 'badge-choice'],
     truefalse: ['判断题', 'badge-truefalse'],
-    fillblank: ['填空题', 'badge-fillblank'],
     shortanswer: ['简答题', 'badge-shortanswer']
   };
   const [label, cls] = map[type] || [type, ''];
   return `<span class="type-badge ${cls}">${label}</span>`;
+}
+
+function addChoiceHint(container, type) {
+  const hint = document.createElement('div');
+  hint.style.cssText = 'font-size:13px;color:var(--text-secondary);margin-bottom:10px;padding:6px 12px;background:#f0f9ff;border-radius:6px;border-left:3px solid var(--primary);';
+  hint.textContent = type === 'multiChoice' ? '🔹 多选题：请选择所有正确答案' : '🔹 单选题：请选择一个正确答案';
+  container.appendChild(hint);
 }
 
 function getDiffBadge(diff) {
@@ -922,7 +955,10 @@ function submitAnswer() {
   const q = currentQuestions[currentIndex];
   const userAns = userAnswers[q.id];
 
-  if (userAns === undefined || userAns === null || userAns === '') {
+  const emptyAnswer = (q.type === 'multiChoice')
+    ? (!Array.isArray(userAns) || userAns.length === 0)
+    : (userAns === undefined || userAns === null || userAns === '');
+  if (emptyAnswer) {
     alert('请先作答！');
     return;
   }
@@ -946,8 +982,8 @@ function submitAnswer() {
   // Disable inputs
   disableInputs();
 
-  // Auto-advance after 1.5s for choice/truefalse
-  if ((q.type === 'choice' || q.type === 'truefalse') && currentIndex < currentQuestions.length - 1) {
+  // Auto-advance after 1.5s for choice/truefalse/multiChoice
+  if ((q.type === 'choice' || q.type === 'truefalse' || q.type === 'multiChoice') && currentIndex < currentQuestions.length - 1) {
     setTimeout(() => {
       currentIndex++;
       renderQuestion();
@@ -968,16 +1004,15 @@ function checkAnswer(q, userAns) {
     return userAns === q.answer;
   } else if (q.type === 'truefalse') {
     return userAns === q.answer;
-  } else if (q.type === 'fillblank') {
-    // Case-insensitive, trim
-    const normalized = userAns.toLowerCase().trim();
-    const correct = q.answer.toLowerCase().trim();
-    return normalized === correct;
+  } else if (q.type === 'multiChoice') {
+    if (!Array.isArray(userAns)) return false;
+    if (!Array.isArray(q.answer)) return false;
+    if (userAns.length !== q.answer.length) return false;
+    const sortedUser = [...userAns].sort((a, b) => a - b);
+    const sortedCorrect = [...q.answer].sort((a, b) => a - b);
+    return sortedUser.every((v, i) => v === sortedCorrect[i]);
   } else if (q.type === 'shortanswer') {
-    // For short answer, check if user answer contains all keywords from any acceptable answer
-    // Accept if user's answer includes a significant portion of the correct answer
     const userLower = userAns.toLowerCase().trim();
-    // Check exact match first
     if (Array.isArray(q.answer)) {
       return q.answer.some(a => userLower.includes(a.toLowerCase()));
     }
@@ -1001,7 +1036,6 @@ function checkShortAnswer(q, userAns) {
 // ==============================
 function renderExamQuestion() {
   if (currentIndex >= currentQuestions.length) {
-    // shouldn't happen during exam, but just in case
     return;
   }
 
@@ -1042,16 +1076,18 @@ function submitExam() {
     examTimerInterval = null;
   }
 
-  // Process all exam answers
   userAnswers = { ...examAnswers };
   submitted = {};
   currentQuestions.forEach(q => {
-    if (userAnswers[q.id] !== undefined && userAnswers[q.id] !== '') {
+    const ans = userAnswers[q.id];
+    const answered = (q.type === 'multiChoice')
+      ? (Array.isArray(ans) && ans.length > 0)
+      : (ans !== undefined && ans !== null && ans !== '');
+    if (answered) {
       submitted[q.id] = true;
-      const isCorrect = checkAnswer(q, userAnswers[q.id]);
+      const isCorrect = checkAnswer(q, ans);
       recordAnswer(q.id, isCorrect, q.category);
     } else {
-      // Unanswered = wrong
       submitted[q.id] = true;
       recordAnswer(q.id, false, q.category);
     }
@@ -1075,13 +1111,16 @@ function showResults(contextMode) {
 
   currentQuestions.forEach(q => {
     const userAns = userAnswers[q.id];
-    const isCorrect = (userAns !== undefined && userAns !== '') ? checkAnswer(q, userAns) : false;
+    const answered = (q.type === 'multiChoice')
+      ? (Array.isArray(userAns) && userAns.length > 0)
+      : (userAns !== undefined && userAns !== null && userAns !== '');
+    const isCorrect = answered ? checkAnswer(q, userAns) : false;
     if (isCorrect) correct++;
     details.push({
       question: q,
       userAnswer: userAns !== undefined ? userAns : null,
       isCorrect,
-      answered: submitted[q.id] || (userAns !== undefined)
+      answered
     });
   });
 
@@ -1136,6 +1175,10 @@ function showResults(contextMode) {
 function formatUserAnswer(q, ans) {
   if (ans === null || ans === undefined) return '未作答';
   if (q.type === 'choice') return q.options?.[ans] || String(ans);
+  if (q.type === 'multiChoice') {
+    if (!Array.isArray(ans)) return String(ans);
+    return ans.map(i => q.options?.[i] || String.fromCharCode(65 + i)).join(', ');
+  }
   if (q.type === 'truefalse') return ans ? '正确' : '错误';
   return String(ans).substring(0, 50);
 }

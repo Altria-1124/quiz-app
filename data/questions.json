@@ -2,403 +2,491 @@
   {
     "id": 1,
     "type": "choice",
-    "category": "JavaScript 基础",
-    "difficulty": "easy",
-    "question": "JavaScript 中，typeof null 的结果是什么？",
-    "options": ["null", "undefined", "object", "boolean"],
-    "answer": 2,
-    "explanation": "typeof null 返回 'object'，这是 JavaScript 的一个历史遗留 bug。"
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
+    "difficulty": "medium",
+    "question": "中国封建社会的基本生产结构（）",
+    "options": [
+      "以个体家庭为单位并与家庭手工业牢固结合的小农经济",
+      "自给自足的自然经济",
+      "封建地主土地所有制",
+      "土地私有制度"
+    ],
+    "answer": 0,
+    "explanation": "正确答案是 A。以个体家庭为单位并与家庭手工业牢固结合的小农经济"
   },
   {
     "id": 2,
     "type": "choice",
-    "category": "JavaScript 基础",
-    "difficulty": "easy",
-    "question": "以下哪个方法可以将 JSON 字符串转换为 JavaScript 对象？",
-    "options": ["JSON.stringify()", "JSON.parse()", "JSON.convert()", "JSON.toObject()"],
-    "answer": 1,
-    "explanation": "JSON.parse() 用于将 JSON 字符串解析为 JavaScript 对象。"
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
+    "difficulty": "medium",
+    "question": "（）标志着世界历史开始进入资本主义时代",
+    "options": [
+      "英国光荣革命",
+      "第一次工业革命",
+      "地理大发现",
+      "英国资产阶级革命"
+    ],
+    "answer": 3,
+    "explanation": "正确答案是 D。英国资产阶级革命"
   },
   {
     "id": 3,
     "type": "choice",
-    "category": "JavaScript 基础",
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "以下代码输出什么？\nconsole.log(0.1 + 0.2 === 0.3);",
-    "options": ["true", "false", "undefined", "报错"],
+    "question": "19世纪末资本主义进入帝国主义阶段后，（）成为殖民主义剥削的重要形式，并出现瓜分世界的狂潮",
+    "options": [
+      "商品输出",
+      "资本输出",
+      "贩卖奴隶",
+      "掠夺土地"
+    ],
     "answer": 1,
-    "explanation": "由于浮点数精度问题，0.1 + 0.2 = 0.30000000000000004，不等于 0.3。"
+    "explanation": "正确答案是 B。资本输出"
   },
   {
     "id": 4,
-    "type": "truefalse",
-    "category": "JavaScript 基础",
-    "difficulty": "easy",
-    "question": "JavaScript 是一种强类型语言。",
-    "answer": false,
-    "explanation": "JavaScript 是弱类型（动态类型）语言，变量类型可以在运行时改变。"
+    "type": "choice",
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
+    "difficulty": "medium",
+    "question": "鸦片战争以清政府的失败而告终。1842年8月29日，清政府与英国签订了中国近代史上的第一个不平等条约是（）",
+    "options": [
+      "中英《南京条约》",
+      "中英《虎门条约》",
+      "中美《望厦条约》",
+      "中法《黄埔条约》"
+    ],
+    "answer": 0,
+    "explanation": "正确答案是 A。中英《南京条约》"
   },
   {
     "id": 5,
-    "type": "truefalse",
-    "category": "JavaScript 基础",
+    "type": "choice",
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "在 JavaScript 中，[] == false 的结果是 true。",
-    "answer": true,
-    "explanation": "空数组在进行 == 比较时，会先转换为空字符串 ''，空字符串再转为 false，所以 [] == false 为 true。"
+    "question": "鸦片战争后，中国经济逐渐被卷入世界资本主义市场，其对中国的影响不包括（）",
+    "options": [
+      "自给自足的自然经济逐步解体",
+      "西方的先进生产技术逐步传入中国",
+      "英国对华输出商品激增",
+      "封建地主土地所有制瓦解"
+    ],
+    "answer": 3,
+    "explanation": "正确答案是 D。封建地主土地所有制瓦解"
   },
   {
     "id": 6,
-    "type": "fillblank",
-    "category": "JavaScript 基础",
-    "difficulty": "easy",
-    "question": "在 JavaScript 中，声明一个不可变的常量使用关键字 ______。",
-    "answer": "const",
-    "alternatives": ["const"],
-    "explanation": "const 关键字用于声明常量，声明后不可重新赋值。"
+    "type": "choice",
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
+    "difficulty": "medium",
+    "question": "中国工人阶级最早出现于（）",
+    "options": [
+      "19世纪30至40年代",
+      "19世纪40至50年代",
+      "19世纪50至60年代",
+      "19世纪60至70年代"
+    ],
+    "answer": 1,
+    "explanation": "正确答案是 B。19世纪40至50年代"
   },
   {
     "id": 7,
-    "type": "fillblank",
-    "category": "JavaScript 基础",
+    "type": "choice",
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "数组方法 ______ 可以在数组末尾添加一个或多个元素，并返回新数组的长度。",
-    "answer": "push",
-    "alternatives": ["push"],
-    "explanation": "arr.push() 方法在数组末尾添加元素，并返回新数组长度。"
+    "question": "中国资产阶级也是近代中国新产生的阶级。它的来源不包括（）",
+    "options": [
+      "买办",
+      "商人",
+      "地主",
+      "城市工商业者"
+    ],
+    "answer": 3,
+    "explanation": "正确答案是 D。城市工商业者"
   },
   {
     "id": 8,
-    "type": "shortanswer",
-    "category": "JavaScript 基础",
+    "type": "choice",
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "请简述 let、const 和 var 的区别。",
-    "answer": [
-      "let 有块级作用域",
-      "const 有块级作用域且不可重新赋值",
-      "var 有函数级作用域",
-      "let 和 const 没有变量提升"
+    "question": "1860年《北京条约》又规定增加开放（）为通商口岸",
+    "options": [
+      "天津",
+      "烟台",
+      "营口",
+      "台南"
     ],
-    "explanation": "var：函数作用域，可重复声明，有变量提升。let：块级作用域，不可重复声明，无变量提升。const：块级作用域，不可重复声明，声明时必须初始化且不可重新赋值。"
+    "answer": 0,
+    "explanation": "正确答案是 A。天津"
   },
   {
     "id": 9,
     "type": "choice",
-    "category": "HTML / CSS",
-    "difficulty": "easy",
-    "question": "HTML5 中，用于绘制图形的元素是？",
-    "options": ["<svg>", "<canvas>", "<draw>", "<graphic>"],
-    "answer": 1,
-    "explanation": "<canvas> 元素用于通过 JavaScript 绘制图形，而 <svg> 用于可缩放矢量图形。"
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
+    "difficulty": "medium",
+    "question": "资本-帝国主义对中国的军事侵略包括：发动侵略战争，屠杀中国人民；（）；勒索赔款，抢掠财富",
+    "options": [
+      "侵占中国领土，划分势力范围",
+      "享有最惠国待遇",
+      "镇压中国人民的反抗",
+      "扶植、收买代理人"
+    ],
+    "answer": 0,
+    "explanation": "正确答案是 A。侵占中国领土，划分势力范围"
   },
   {
     "id": 10,
     "type": "choice",
-    "category": "HTML / CSS",
+    "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "CSS 中，实现水平居中的方式不包括以下哪项？",
-    "options": ["margin: 0 auto", "text-align: center", "flexbox justify-content: center", "vertical-align: center"],
-    "answer": 3,
-    "explanation": "vertical-align 用于行内元素和表格单元格的垂直对齐，不能直接用于块级元素的水平居中。"
+    "question": "1843年（）规定，在通商口岸，中国人如与英侨\"遇有交涉诉讼\"，英国领事有\"查察\"\"听诉\"之权",
+    "options": [
+      "《望厦条约》",
+      "《五口通商章程》",
+      "《烟台条约》",
+      "《虎门条约》"
+    ],
+    "answer": 1,
+    "explanation": "正确答案是 B。《五口通商章程》"
   },
   {
     "id": 11,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "中国封建社会的基本生产结构（）",
-    "options": ["以个体家庭为单位并与家庭手工业牢固结合的小农经济", "自给自足的自然经济", "封建地主土地所有制", "土地私有制度"],
+    "question": "广学会发行的刊物（），在介绍西方史地、政治、文化的同时，也宣扬殖民主义奴化思想",
+    "options": [
+      "《万国公报》",
+      "《中外纪闻》",
+      "《印度隶英十二益说》",
+      "《泰西新史揽要》"
+    ],
     "answer": 0,
-    "explanation": "中国封建社会的基本生产结构是以个体家庭为单位并与家庭手工业牢固结合的小农经济。"
+    "explanation": "正确答案是 A。《万国公报》"
   },
   {
     "id": 12,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "（）标志着世界历史开始进入资本主义时代",
-    "options": ["英国光荣革命", "第一次工业革命", "地理大发现", "英国资产阶级革命"],
-    "answer": 3,
-    "explanation": "英国资产阶级革命标志着世界历史开始进入资本主义时代。"
+    "question": "（），是外国侵略者控制中国政治的重要手段之一",
+    "options": [
+      "奴化教育",
+      "把持中国海关",
+      "门户开放政策",
+      "签订不平等条约"
+    ],
+    "answer": 1,
+    "explanation": "正确答案是 B。把持中国海关"
   },
   {
     "id": 13,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "19世纪末资本主义进入帝国主义阶段后，（）成为殖民主义剥削的重要形式，并出现瓜分世界的狂潮",
-    "options": ["商品输出", "资本输出", "贩卖奴隶", "掠夺土地"],
-    "answer": 1,
-    "explanation": "19世纪末资本主义进入帝国主义阶段后，资本输出成为殖民主义剥削的重要形式。"
+    "question": "洋货只需在海关交纳2.5%的（），就可以在中国内地通行无阻",
+    "options": [
+      "关税",
+      "海关税",
+      "厘金",
+      "子口税"
+    ],
+    "answer": 3,
+    "explanation": "正确答案是 D。子口税"
   },
   {
     "id": 14,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "鸦片战争以清政府的失败而告终。1842年8月29日，清政府与英国签订了中国近代史上的第一个不平等条约是（）",
-    "options": ["中英《南京条约》", "中英《虎门条约》", "中美《望厦条约》", "中法《黄埔条约》"],
-    "answer": 0,
-    "explanation": "1842年8月29日，清政府与英国签订了中国近代史上的第一个不平等条约——中英《南京条约》。"
+    "question": "（），是中国近代史上中国人民第一次大规模的反侵略武装斗争",
+    "options": [
+      "虎门销烟",
+      "三元里人民抗英斗争",
+      "太平天国运动",
+      "义和团运动"
+    ],
+    "answer": 1,
+    "explanation": "正确答案是 B。三元里人民抗英斗争"
   },
   {
     "id": 15,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "鸦片战争后，中国经济逐渐被卷入世界资本主义市场，其对中国的影响不包括（）",
-    "options": ["自给自足的自然经济逐步解体", "西方的先进生产技术逐步传入中国", "英国对华输出商品激增", "封建地主土地所有制瓦解"],
-    "answer": 3,
-    "explanation": "鸦片战争后，封建地主土地所有制并未瓦解，仍在中国农村占据统治地位。"
+    "question": "资本主义列强还通过（），传播其价值理念",
+    "options": [
+      "兴办教育",
+      "发展失业",
+      "国民教育",
+      "创建学校"
+    ],
+    "answer": 0,
+    "explanation": "正确答案是 A。兴办教育"
   },
   {
     "id": 16,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "中国工人阶级最早出现于（）",
-    "options": ["19世纪30至40年代", "19世纪40至50年代", "19世纪50至60年代", "19世纪60至70年代"],
-    "answer": 1,
-    "explanation": "中国工人阶级最早出现于19世纪40至50年代，伴随外国资本在华企业而产生。"
+    "question": "从1840年至1919年的80年间，中国人民对外来侵略进行了英勇顽强的反抗，这些斗争具有重大的历史作用。因为正是由于（），才使得经济技术落后的状况长期得不到改变",
+    "options": [
+      "社会制度的腐败",
+      "清王朝的腐朽",
+      "不了解世界大势",
+      "不懂得御敌之策"
+    ],
+    "answer": 0,
+    "explanation": "正确答案是 A。社会制度的腐败"
   },
   {
     "id": 17,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "中国资产阶级也是近代中国新产生的阶级。它的来源不包括（）",
-    "options": ["买办", "商人", "地主", "城市工商业者"],
+    "question": "帝国主义侵略中国的最终目的，是要（）",
+    "options": [
+      "帮助中国发展资本主义",
+      "传播西方先进文化",
+      "为本国资本主义发展寻求市场和原料产地",
+      "瓜分中国，灭亡中国"
+    ],
     "answer": 3,
-    "explanation": "中国资产阶级的来源主要是买办、商人、地主和官僚，不包括城市工商业者本身。"
+    "explanation": "正确答案是 D。瓜分中国，灭亡中国"
   },
   {
     "id": 18,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "1860年《北京条约》又规定增加开放（）为通商口岸",
-    "options": ["天津", "烟台", "营口", "台南"],
-    "answer": 0,
-    "explanation": "1860年《北京条约》规定增加开放天津为通商口岸。"
+    "question": "郑观应在所著（）中提出大力发展民族工商业，同西方国家进行\"商战\"，设立议院，实行\"君民共主\"制度等主张",
+    "options": [
+      "《劝学篇》",
+      "《劝世良言》",
+      "《盛世危言》",
+      "《救亡决论》"
+    ],
+    "answer": 2,
+    "explanation": "正确答案是 C。《盛世危言》"
   },
   {
     "id": 19,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-    "question": "资本-帝国主义对中国的军事侵略包括：发动侵略战争，屠杀中国人民；（）；勒索赔款，抢掠财富",
-    "options": ["侵占中国领土，划分势力范围", "享有最惠国待遇", "镇压中国人民的反抗", "扶植、收买代理人"],
+    "question": "康有为1898年4月在（）的演说中把民族意识表达得淋漓尽致",
+    "options": [
+      "保国会",
+      "强学会",
+      "日知会",
+      "广学会"
+    ],
     "answer": 0,
-    "explanation": "资本-帝国主义对中国的军事侵略包括侵占中国领土、划分势力范围。"
+    "explanation": "正确答案是 A。保国会"
   },
   {
     "id": 20,
     "type": "choice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
-"question": "1843年（）规定，在通商口岸，中国人如与英侨「遇有交涉诉讼」，英国领事有「查察」「听诉」之权",
-    "options": ["《望厦条约》", "《五口通商章程》", "《烟台条约》", "《虎门条约》"],
-    "answer": 1,
-    "explanation": "1843年《五口通商章程》规定了英国领事在通商口岸的领事裁判权。"
+    "question": "孙中山1894年11月在创立革命团体兴中会时喊出了（）这个时代的最强音",
+    "options": [
+      "振兴中国",
+      "伟大复兴",
+      "振兴中华",
+      "民族复兴"
+    ],
+    "answer": 2,
+    "explanation": "正确答案是 C。振兴中华"
   },
   {
     "id": 21,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-    "question": "广学会发行的刊物（），在介绍西方史地、政治、文化的同时，也宣扬殖民主义奴化思想",
-    "options": ["《万国公报》", "《中外纪闻》", "《印度隶英十二益说》", "《泰西新史揽要》"],
-    "answer": 0,
-    "explanation": "广学会发行的《万国公报》在介绍西方知识的同时，也宣扬殖民主义奴化思想。"
-  },
-  {
-    "id": 22,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-    "question": "（），是外国侵略者控制中国政治的重要手段之一",
-    "options": ["奴化教育", "把持中国海关", "门户开放政策", "签订不平等条约"],
-    "answer": 1,
-    "explanation": "把持中国海关是外国侵略者控制中国政治的重要手段之一。"
-  },
-  {
-    "id": 23,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-    "question": "洋货只需在海关交纳2.5%的（），就可以在中国内地通行无阻",
-    "options": ["关税", "海关税", "厘金", "子口税"],
-    "answer": 3,
-    "explanation": "洋货只需在海关交纳2.5%的子口税，就可以在中国内地通行无阻，这是列强获得的经济特权。"
-  },
-  {
-    "id": 24,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-    "question": "（），是中国近代史上中国人民第一次大规模的反侵略武装斗争",
-    "options": ["虎门销烟", "三元里人民抗英斗争", "太平天国运动", "义和团运动"],
-    "answer": 1,
-    "explanation": "三元里人民抗英斗争是中国近代史上中国人民第一次大规模的反侵略武装斗争。"
-  },
-  {
-    "id": 25,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-    "question": "资本主义列强还通过（），传播其价值理念",
-    "options": ["兴办教育", "发展事业", "国民教育", "创建学校"],
-    "answer": 0,
-    "explanation": "资本主义列强通过兴办教育来传播其价值理念，进行文化渗透。"
-  },
-  {
-    "id": 26,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-    "question": "从1840年至1919年的80年间，中国人民对外来侵略进行了英勇顽强的反抗。因为正是由于（），才使得经济技术落后的状况长期得不到改变",
-    "options": ["社会制度的腐败", "清王朝的腐朽", "不了解世界大势", "不懂得御敌之策"],
-    "answer": 0,
-    "explanation": "社会制度的腐败是经济技术落后状况长期得不到改变的根本原因。"
-  },
-  {
-    "id": 27,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-    "question": "帝国主义侵略中国的最终目的，是要（）",
-    "options": ["帮助中国发展资本主义", "传播西方先进文化", "为本国资本主义发展寻求市场和原料产地", "瓜分中国，灭亡中国"],
-    "answer": 3,
-    "explanation": "帝国主义侵略中国的最终目的是瓜分中国、灭亡中国。"
-  },
-  {
-    "id": 28,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-"question": "郑观应在所著（）中提出大力发展民族工商业，同西方国家进行「商战」，设立议院，实行「君民共主」制度等主张",
-    "options": ["《劝学篇》", "《劝世良言》", "《盛世危言》", "《救亡决论》"],
-    "answer": 2,
-    "explanation": "郑观应在《盛世危言》中提出大力发展民族工商业、设立议院等主张。"
-  },
-  {
-    "id": 29,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-    "question": "康有为1898年4月在（）的演说中把民族意识表达得淋漓尽致",
-    "options": ["保国会", "强学会", "日知会", "广学会"],
-    "answer": 0,
-    "explanation": "康有为1898年4月在保国会的演说中把民族意识表达得淋漓尽致。"
-  },
-  {
-    "id": 30,
-    "type": "choice",
-    "category": "第一章 进入近代后中华民族的磨难与抗争",
-    "difficulty": "medium",
-"question": "孙中山1894年11月在创立革命团体兴中会时喊出了（）这个时代的最强音",
-    "options": ["振兴中国", "伟大复兴", "振兴中华", "民族复兴"],
-    "answer": 2,
-    "explanation": "孙中山1894年11月在创立兴中会时喊出了「振兴中华」这个时代的最强音。"
-  },
-  {
-    "id": 31,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "中国封建社会的社会结构特点是族权和政权相结合的封建宗法等级制度。其核心是宗族家长制，突出（）",
-    "options": ["父权", "夫权", "君权", "族长权"],
-    "answer": [0, 1, 2],
-    "explanation": "中国封建社会的社会结构核心是宗族家长制，突出父权、夫权和君权。"
+    "options": [
+      "父权",
+      "夫权",
+      "君权",
+      "族长权"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "正确答案是 A, B, C。"
   },
   {
-    "id": 32,
+    "id": 22,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "资本-帝国主义列强在对中国进行文化渗透的目的包括（）",
-    "options": ["宣扬殖民主义奴化思想", "麻醉中国人民的精神", "进行侵略活动宣传宗教和西学", "摧毁中国人的民族自尊心和自信心"],
-    "answer": [0, 1, 3],
-    "explanation": "列强文化渗透的目的是宣扬殖民主义奴化思想、麻醉中国人民的精神、摧毁中国人的民族自尊心和自信心。"
+    "options": [
+      "宣扬殖民主义奴化思想",
+      "麻醉中国人民的精神",
+      "进行侵略活动宣传宗教和西学",
+      "摧毁中国人的民族自尊心和自信心"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "正确答案是 A, B, D。"
   },
   {
-    "id": 33,
+    "id": 23,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "中国政府举借外债，主要是以（）和（）为担保",
-    "options": ["关税", "厂矿", "盐税", "航运"],
-    "answer": [0, 2],
-    "explanation": "中国政府举借外债主要以关税和盐税为担保。"
+    "options": [
+      "关税",
+      "厂矿",
+      "盐税",
+      "航运"
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explanation": "正确答案是 A, C。"
   },
   {
-    "id": 34,
+    "id": 24,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "资本-帝国主义列强对中国进行经济侵略的方式主要有（）",
-    "options": ["控制中国的通商口岸", "剥夺中国的关税自主权", "实行商品倾销和资本输出", "操纵中国的经济命脉"],
-    "answer": [0, 1, 2, 3],
-    "explanation": "列强对中国经济侵略的方式包括控制通商口岸、剥夺关税自主权、实行商品倾销和资本输出、操纵经济命脉等。"
+    "options": [
+      "控制中国的通商口岸",
+      "剥夺中国的关税自主权",
+      "实行商品倾销和资本输出",
+      "操纵中国的经济命脉"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "正确答案是 A, B, C, D。"
   },
   {
-    "id": 35,
+    "id": 25,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "在中法战争后期，1885年3月，爱国将领冯子材指挥清军取得（）和（）",
-    "options": ["镇南关大捷", "谅山大捷", "宁远大捷", "徐东大捷"],
-    "answer": [0, 1],
-    "explanation": "1885年3月，冯子材指挥清军取得镇南关大捷和谅山大捷。"
+    "options": [
+      "镇南关大捷",
+      "谅山大捷",
+      "宁远大捷",
+      "徐东大捷"
+    ],
+    "answer": [
+      0,
+      1
+    ],
+    "explanation": "正确答案是 A, B。"
   },
   {
-    "id": 36,
+    "id": 26,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "19世纪50～80年代，俄国共侵占我国领土150多万平方公里，这主要是通过（）完成的",
-    "options": ["《瑷珲条约》", "《北京条约》", "《勘分西北界约记》", "《改订伊犁条约》"],
-    "answer": [0, 1, 2, 3],
-    "explanation": "俄国通过《瑷珲条约》《北京条约》《勘分西北界约记》《改订伊犁条约》等侵占我国领土150多万平方公里。"
+    "options": [
+      "《瑷辉条约》",
+      "《北京条约》",
+      "《勘分西北界约记》",
+      "《改订伊犁条约》"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "正确答案是 A, B, C, D。"
   },
   {
-    "id": 37,
+    "id": 27,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "三国干涉还辽的三国包括（）",
-    "options": ["英国", "俄国", "法国", "德国"],
-    "answer": [1, 2, 3],
-    "explanation": "三国干涉还辽的三国是俄国、法国和德国。"
+    "options": [
+      "英国",
+      "俄国",
+      "法国",
+      "德国"
+    ],
+    "answer": [
+      1,
+      2,
+      3
+    ],
+    "explanation": "正确答案是 B, C, D。"
   },
   {
-    "id": 38,
+    "id": 28,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "19世纪70至80年代，列强从侵占中国周边邻国发展到蚕食中国边疆地区（）",
-    "options": ["英国从印度侵入西藏", "又从缅甸入侵云南", "法国则从越南侵犯广西", "葡萄牙占领澳门"],
-    "answer": [0, 1, 2],
-    "explanation": "19世纪70至80年代，英国从印度侵入西藏、从缅甸入侵云南，法国从越南侵犯广西。"
+    "options": [
+      "英国从印度侵入西藏",
+      "又从缅甸入侵云南",
+      "法国则从越南侵犯广西",
+      "葡萄牙占领澳门"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "正确答案是 A, B, C。"
   },
   {
-    "id": 39,
+    "id": 29,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "魏源在1843年1月编成（），其内容包括世界各国的历史、地理，还有总结鸦片战争经验教训的（），翻译西人论述的（）及西洋科技船炮图说等",
-    "options": ["《海国图志》", "《筹海篇》", "《夷情备采》", "《康蝤纪行》"],
-    "answer": [0, 1, 2],
-    "explanation": "魏源编成《海国图志》，其中包含《筹海篇》和《夷情备采》等内容。"
+    "options": [
+      "《海国图志》",
+      "《筹海篇》",
+      "《夷情备采》",
+      "《康蝤纪行》"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "正确答案是 A, B, C。"
   },
   {
-    "id": 40,
+    "id": 30,
     "type": "multiChoice",
     "category": "第一章 进入近代后中华民族的磨难与抗争",
     "difficulty": "medium",
     "question": "近代中国人民的反侵略战争（）",
-    "options": ["沉重地打击了资本—帝国主义列强的侵华野心", "使我们的国家和民族历尽劫难、屡遭侵略而不亡", "它表现出来的爱国主义精神，铸成了中华民族的民族魂", "反侵略战争的失败，从反面教育了中国人民，极大地促进了中国人的思考、探索和奋起"],
-    "answer": [1, 2, 3],
-    "explanation": "近代中国人民的反侵略战争使国家和民族历尽劫难而不亡，铸成了中华民族的民族魂，也从反面教育了中国人民。"
+    "options": [
+      "沉重地打击了资本—帝国主义列强的侵华野心",
+      "使我们的国家和民族历尽劫难、屡遭侵略而不亡",
+      "它表现出来的爱国主义精神，铸成了中华民族的民族魂",
+      "反侵略战争的失败，从反面教育了中国人民，极大地促进了中国人的思考、探索和奋起"
+    ],
+    "answer": [
+      1,
+      2,
+      3
+    ],
+    "explanation": "正确答案是 B, C, D。"
   }
 ]
