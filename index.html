@@ -418,8 +418,7 @@
       <div class="explanation-box" id="explanationBox"></div>
       <div class="action-row">
         <button class="btn btn-outline" id="prevBtn" onclick="prevQuestion()" disabled>⬅ 上一题</button>
-        <button class="btn btn-primary" id="submitBtn" onclick="submitAnswer()">✅ 提交答案</button>
-        <button class="btn btn-outline" id="nextBtn" onclick="nextQuestion()" disabled>下一题 ➡</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="submitAndNext()">下一题 ➡</button>
       </div>
     </div>
   </div>
@@ -781,9 +780,9 @@ function renderQuestion() {
 
   // Buttons
   document.getElementById('prevBtn').disabled = currentIndex === 0;
-  document.getElementById('nextBtn').disabled = currentIndex >= total - 1;
-  document.getElementById('submitBtn').disabled = !!submitted[q.id];
-  document.getElementById('submitBtn').textContent = submitted[q.id] ? '已提交' : '✅ 提交答案';
+  const isLast = currentIndex >= total - 1;
+  document.getElementById('nextBtn').textContent = isLast ? '✅ 提交答案' : '下一题 ➡';
+  document.getElementById('nextBtn').disabled = false;
 }
 
 function renderAnswerArea(container, q, context) {
@@ -950,51 +949,54 @@ function prevQuestion() {
   }
 }
 
-function nextQuestion() {
-  if (currentIndex < currentQuestions.length - 1) {
-    autoSubmitCurrent();
-    currentIndex++;
-    renderQuestion();
-  }
-}
-
-function submitAnswer() {
+function submitAndNext() {
   const q = currentQuestions[currentIndex];
-  const userAns = userAnswers[q.id];
+  const isLast = currentIndex >= currentQuestions.length - 1;
 
-  const emptyAnswer = (q.type === 'multiChoice')
-    ? (!Array.isArray(userAns) || userAns.length === 0)
-    : (userAns === undefined || userAns === null || userAns === '');
-  if (emptyAnswer) {
-    alert('请先作答！');
+  // If already submitted on last question, just finish
+  if (isLast && submitted[q.id]) {
+    finishQuiz();
     return;
   }
 
-  submitted[q.id] = true;
-  const isCorrect = checkAnswer(q, userAns);
-  recordAnswer(q.id, isCorrect, q.category);
+  const userAns = userAnswers[q.id];
+  const emptyAnswer = (q.type === 'multiChoice')
+    ? (!Array.isArray(userAns) || userAns.length === 0)
+    : (userAns === undefined || userAns === null || userAns === '');
 
-  // Show explanation
-  const expl = document.getElementById('explanationBox');
-  expl.innerHTML = `<strong>💡 解析：</strong>${q.explanation || '暂无解析'}`;
-  expl.classList.add('show');
+  if (!submitted[q.id]) {
+    if (emptyAnswer) {
+      alert('请先作答！');
+      return;
+    }
+    submitted[q.id] = true;
+    const isCorrect = checkAnswer(q, userAns);
+    recordAnswer(q.id, isCorrect, q.category);
 
-  // Mark correct/wrong
-  markCorrectAnswer(q);
+    // Show explanation
+    const expl = document.getElementById('explanationBox');
+    expl.innerHTML = `<strong>💡 解析：</strong>${q.explanation || '暂无解析'}`;
+    expl.classList.add('show');
 
-  // Update button
-  document.getElementById('submitBtn').disabled = true;
-  document.getElementById('submitBtn').textContent = isCorrect ? '✅ 回答正确！' : '❌ 回答错误';
+    // Mark correct/wrong
+    markCorrectAnswer(q);
 
-  // Disable inputs
-  disableInputs();
+    // Disable inputs
+    disableInputs();
+  }
 
-  // Auto-advance after 1.5s for choice/truefalse/multiChoice
-  if ((q.type === 'choice' || q.type === 'truefalse' || q.type === 'multiChoice') && currentIndex < currentQuestions.length - 1) {
+  if (isLast) {
+    // Update button to show result, then finish
+    const isCorrect = checkAnswer(q, userAns);
+    document.getElementById('nextBtn').textContent = isCorrect ? '✅ 回答正确！' : '❌ 回答错误';
+    document.getElementById('nextBtn').disabled = true;
+    setTimeout(() => finishQuiz(), 1200);
+  } else {
+    // Advance to next question automatically
     setTimeout(() => {
       currentIndex++;
       renderQuestion();
-    }, 1500);
+    }, 500);
   }
 }
 
