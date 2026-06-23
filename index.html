@@ -532,13 +532,21 @@ let examAnswers = {};
 // ==============================
 async function loadQuestions() {
   try {
-    const res = await fetch('data/questions.json');
-    allQuestions = await res.json();
+    const url = 'data/questions.json?v=' + Date.now();
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error('HTTP ' + res.status + ': ' + res.statusText);
+    }
+    const text = await res.text();
+    console.log('题库原始文本前 100 字符:', text.substring(0, 100));
+    allQuestions = JSON.parse(text);
+    console.log('题库加载成功，共 ' + allQuestions.length + ' 道题');
     applyFilters();
     renderCategoryFilters();
   } catch (e) {
-    console.error('题库加载失败:', e);
-    alert('题库加载失败，请检查 data/questions.json 文件是否存在。');
+    console.error('题库加载失败:', e.message);
+    console.error('错误堆栈:', e.stack);
+    alert('题库加载失败: ' + e.message + '\n请按 F12 打开控制台查看详情。');
   }
 }
 
