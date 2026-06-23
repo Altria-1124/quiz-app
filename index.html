@@ -930,8 +930,21 @@ function getDiffBadge(diff) {
 // ==============================
 //  QUIZ: Navigation
 // ==============================
+function autoSubmitCurrent() {
+  const q = currentQuestions[currentIndex];
+  if (submitted[q.id]) return;
+  const userAns = userAnswers[q.id];
+  const emptyAnswer = (q.type === 'multiChoice')
+    ? (!Array.isArray(userAns) || userAns.length === 0)
+    : (userAns === undefined || userAns === null || userAns === '');
+  if (emptyAnswer) return;
+  submitted[q.id] = true;
+  recordAnswer(q.id, checkAnswer(q, userAns), q.category);
+}
+
 function prevQuestion() {
   if (currentIndex > 0) {
+    autoSubmitCurrent();
     currentIndex--;
     renderQuestion();
   }
@@ -939,6 +952,7 @@ function prevQuestion() {
 
 function nextQuestion() {
   if (currentIndex < currentQuestions.length - 1) {
+    autoSubmitCurrent();
     currentIndex++;
     renderQuestion();
   }
